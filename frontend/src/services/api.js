@@ -1,7 +1,9 @@
-const BASE_URL = import.meta.env.VITE_API_BASE || "http://localhost:8000/api";
+
+const DEFAULT_API = import.meta.env.VITE_API_BASE ?? "https://ai-document-summarizer-23496485622.asia-south2.run.app";
+export const BASE_URL = DEFAULT_API.endsWith("/api") ? DEFAULT_API.slice(0, -4) : DEFAULT_API;
 
 export async function summarize({ text, file, style = "brief", max_tokens }) {
-  const url = `${BASE_URL}/summarize`;
+  const url = `${BASE_URL}/api/summarize`;
 
   if (file) {
     const form = new FormData();

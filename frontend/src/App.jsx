@@ -4,7 +4,7 @@ import SummaryResult from "./components/SummaryResult";
 import { summarize } from "./services/api";
 
 // Decorative hero image (local uploaded screenshot)
-// const heroImageUrl = "/mnt/data/Screenshot 2025-11-20 at 17-12-21 Document Summarizer.png";
+// const heroImageUrl = "/src/assests/img.jpg";
 
 export default function App() {
   const [loading, setLoading] = useState(false);
