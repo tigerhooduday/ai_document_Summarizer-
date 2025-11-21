@@ -1,174 +1,205 @@
 
-# 📄 AI Document Summarization Service  
-A full-stack LLM-powered document summarizer built with **FastAPI**, **Python**, **React (Vite)**, **Groq/OpenAI**, and deployed on **Google Cloud Run** + **Hostinger**.
+# 🌟 **AI Document Summarizer**
 
-This project was created as a coding assignment to demonstrate:
-- Backend API design  
-- LLM integration  
-- Document/file processing  
-- Frontend UI development  
-- Deployment & DevOps skills  
-- Clean project structure & error handling  
+A modern, fast, cloud-ready LLM-powered service for summarizing documents with multiple styles and multi-file support.
+
+> Built with **React + Vite**, **FastAPI**, **Groq LLaMA**, and deployed on **Google Cloud Run** + **Hostinger**.
+> A clean, production-ready architecture suitable for scaling future AI projects.
 
 ---
 
-## 🚀 Features
-
-### ✅ Upload or paste text  
-Supports:
-- Plain text  
-- PDF  
-- Word (.docx)  
-- Markdown  
-- Images (OCR optional if added later)  
-- And more  
-
-### ✅ Summarization styles  
-- **Brief**
-- **Detailed**
-- **Bullet points**
-
-### ✅ LLM integration
-Supports:
-- **Groq (Llama 3.1/3.2/3.3 models)**  
-- **OpenAI (fallback option)**  
-- **Local stub mode** for testing without API cost
-
-### ✅ Modern UI  
-- Glassmorphism + light theme  
-- Mobile-responsive  
-- Drag-and-drop file upload  
-- Real-time status + error messages  
-- Clean designer-style interface  
-
-### ✅ Full error handling  
-- Size validation  
-- Invalid extension  
-- LLM quota/rate limit fallback  
-- CORS rules  
-- Cloud Run logging  
-
-### ✅ Deployment  
-- **Backend:** Google Cloud Run (Docker container)  
-- **Frontend:** Hostinger static hosting  
+<p align="center">
+  <img src="https://img.shields.io/badge/Frontend-React%20%2B%20Vite-blue?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Backend-FastAPI-brightgreen?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/LLM-Groq%20LLaMA3-orange?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Deployed%20On-Google%20Cloud%20Run-yellow?style=for-the-badge"/>
+</p>
 
 ---
 
-## 🏗️ Tech Stack
+# 📌 **Table of Contents**
 
-### **Frontend**
-- React (Vite)
-- JSX components
-- Glassy UI with CSS
-- Fetch API for backend calls
+* [✨ Overview](#-overview)
+* [🧠 Features](#-features)
+* [📐 Architecture](#-architecture)
+* [🧰 Tech Stack](#-tech-stack)
+* [⚙️ Setup Instructions](#️-setup-instructions)
 
-### **Backend**
-- Python 3.11
-- FastAPI
-- Uvicorn
-- Groq API client
-- OpenAI (optional)
-- python-multipart, aiofiles
-- Docker
-
-### **DevOps**
-- Google Artifact Registry
-- Google Cloud Build
-- Google Cloud Run
-- Hostinger static hosting
-- Environment variables via Secret Manager / Cloud Run
+  * [Backend Setup](#1-backend-setup-fastapi--groq)
+  * [Frontend Setup](#2-frontend-setup-react--vite)
+* [🚀 Deployment](#-deployment)
+* [📝 Brief Explanation – Approach & Design Decisions](#-brief-explanation--approach--design-decisions)
+* [📷 Screenshots](#-screenshots)
+* [📄 License](#-license)
 
 ---
 
-## 📁 Project Structure
+# ✨ **Overview**
+
+The **AI Document Summarizer** allows users to upload text or documents and instantly generate:
+
+* **Brief summaries**
+* **Detailed summaries**
+* **Bullet-style summaries**
+
+It supports multiple file formats:
+
+`TXT, PDF, DOCX, Markdown, JSON, CSV`
+
+The backend uses **Groq LLaMA-3.3 (70B)** for extremely fast inference, and the frontend features a **beautiful glassy UI** that is mobile-friendly.
+
+---
+
+# 🧠 **Features**
+
+### ✔ Upload multiple document formats
+
+TXT, PDF, DOCX, MD, JSON, CSV
+
+### ✔ LLM-Powered Summaries
+
+Using **Groq LLaMA3.3-70B** (free & fast)
+
+### ✔ Three summary modes
+
+* **Brief**
+* **Detailed**
+* **Bullet Points**
+
+### ✔ Beautiful modern UI
+
+Glassy, responsive, elegant, creative.
+
+### ✔ Cloud-Ready Architecture
+
+Backend → Google Cloud Run
+Frontend → Hostinger
+
+### ✔ Handles errors gracefully
+
+Quota errors, invalid file, timeout, etc.
+
+---
+
+# 📐 **Architecture**
 
 ```
-
-Project-Assignment/
-├── README.md
-├── LICENSE
-├── frontend/
-│   ├── package.json
-│   ├── vite.config.js
-│   ├── public/
-│   └── src/
-│       ├── App.jsx
-│       ├── main.jsx
-│       ├── components/
-│       ├── services/api.js
-│       └── styles/
-├── backend/
-│   ├── Dockerfile
-│   ├── requirements.txt
-│   ├── cloudbuild.yaml
-│   ├── app/
-│   │   ├── main.py
-│   │   ├── api/summarize.py
-│   │   ├── services/llm_client.py
-│   │   └── models/schemas.py
-│   └── README_BACKEND.md
-└── .gitignore
-
-````
+                         ┌────────────────────────┐
+                         │        Frontend        │
+                         │  React + Vite (UI)     │
+                         │  Hostinger Static Site │
+                         └───────────┬────────────┘
+                                     │ HTTPS
+                                     ▼
+                     ┌─────────────────────────────────┐
+                     │            Backend               │
+                     │        FastAPI + Uvicorn        │
+                     │  Cloud Run (Docker Container)   │
+                     └───────────┬─────────────────────┘
+                                 │
+                                 ▼
+                      ┌──────────────────────┐
+                      │      Groq Cloud      │
+                      │  (LLaMA 3.3 70B)     │
+                      └──────────────────────┘
+```
 
 ---
 
-## 🔧 Backend Setup (Local)
+# 🧰 **Tech Stack**
 
-### 1. Create virtual env
+### **Frontend**
+
+* React (JSX)
+* Vite
+* Tailwind-like custom styling
+* Glassmorphic UI
+
+### **Backend**
+
+* Python 3.11
+* FastAPI
+* Uvicorn
+* Groq SDK
+* File parsers (pdfplumber, python-docx, markdown, csv, json)
+
+### **Deployment**
+
+* Google Cloud Run (Docker)
+* Google Artifact Registry
+* Hostinger Static Hosting (for frontend)
+* gcloud CLI + Cloud Build
+
+---
+
+# ⚙️ **Setup Instructions**
+
+## 1️⃣ **Backend Setup (FastAPI + Groq)**
+
+### **Clone repo**
+
 ```bash
+git clone https://github.com/tigerhooduday/ai_document_Summarizer-/
 cd backend
-python -m venv .venv
-source .venv/bin/activate      # Windows: .venv\Scripts\activate
-````
+```
 
-### 2. Install dependencies
+### **Create virtual env**
+
+```bash
+python -m venv .venv
+source .venv/bin/activate   # Mac
+.venv\Scripts\activate      # Windows
+```
+
+### **Install dependencies**
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Create `.env`
+### **Create `.env`**
 
 ```
 USE_GROQ=true
-GROQ_API_KEY=your-api-key
+GROQ_API_KEY=your_key_here
 GROQ_MODEL=llama-3.3-70b-versatile
-FRONTEND_ALLOW_ORIGINS=http://localhost:5173
-BACKEND_PORT=8000
 ```
 
-### 4. Run locally
+### **Run server**
 
 ```bash
-uvicorn app.main:app --reload --port 8000
+uvicorn app.main:app --reload
 ```
 
-Visit:
+### 🚀 Local API Endpoint
 
 ```
-http://localhost:8000
-http://localhost:8000/docs
+http://localhost:8000/api/summarize
 ```
 
 ---
 
-## 🎨 Frontend Setup (Local)
+## 2️⃣ **Frontend Setup (React + Vite)**
 
-### 1. Install dependencies
+### **Go to frontend folder**
 
 ```bash
 cd frontend
+```
+
+### **Install dependencies**
+
+```bash
 npm install
 ```
 
-### 2. Create `.env`
+### **Create `.env`**
 
 ```
 VITE_API_BASE=http://localhost:8000
 ```
 
-### 3. Run dev mode
+### **Run frontend**
 
 ```bash
 npm run dev
@@ -176,116 +207,106 @@ npm run dev
 
 ---
 
-## ☁️ Deployment
+# 🚀 **Deployment**
 
-### 🚀 **Backend → Google Cloud Run**
+### **Backend (Google Cloud Run)**
 
-#### 1. Build and push image
+Uses:
+
+* Dockerfile
+* cloudbuild.yaml
+* Artifact Registry
+* Cloud Run
+
+### To deploy:
 
 ```bash
-gcloud builds submit --config cloudbuild.yaml --project=ai-projectbackend --region=asia-south2
-```
-
-#### 2. Deploy
-
-```bash
+gcloud builds submit --config cloudbuild.yaml --project ai-projectbackend
 gcloud run deploy ai-document-summarizer \
-  --image="asia-south2-docker.pkg.dev/ai-projectbackend/ai-document-summarizer/ai-document-summarizer:BUILD_ID" \
-  --platform=managed --region=asia-south2 \
-  --allow-unauthenticated --memory=256Mi \
-  --set-env-vars="FRONTEND_ALLOW_ORIGINS=*"
+  --image <latest-image-url> \
+  --region asia-south2 \
+  --allow-unauthenticated
 ```
 
-#### 3. Cloud Run URL
+### **Frontend (Hostinger)**
 
-```
-https://ai-document-summarizer-xxxxx.asia-south2.run.app
-```
+1. Build frontend:
+
+   ```bash
+   npm run build
+   ```
+2. Upload `dist/` folder to Hostinger File Manager
+3. Set environment variable:
+
+   ```
+   VITE_API_BASE="https://your-cloudrun-url"
+   ```
 
 ---
 
-### 🎯 **Frontend → Hostinger Deployment**
+# 📝 **Brief Explanation – Approach & Design Decisions**
 
-1. Build the frontend:
+### **1. Clear separation of frontend and backend**
 
-```bash
-npm run build
-```
+* React handles UI/UX
+* FastAPI handles summarization API
+* Makes deployment modular
+* Easier scaling for future AI tools
 
-2. Upload `dist/` folder to:
+### **2. Groq selected as LLM provider**
 
-```
-public_html/Project/AI/ai_document_Summarizer/
-```
+* OpenAI quota issues → fallback to Groq
+* Groq is **fast**, **free**, and supports **OpenAI-compatible API**
+* Ideal for workloads needing high speed
 
-3. Update API URL via:
+### **3. Multi-file support**
 
-```
-VITE_API_BASE=https://your-cloud-run-url
-```
+Backend supports:
 
-4. Done ✔
+* TXT → direct read
+* PDF → pdfplumber extraction
+* DOCX → python-docx
+* Markdown → markdown lib
+* CSV & JSON → structured content extraction
 
----
+### **4. Solid error handling**
 
-## 🔐 Environment Variables
+* Handles invalid file format
+* Handles empty text
+* Handles LLM quota errors
+* Returns user-friendly messages
 
-| Variable                 | Description                     |
-| ------------------------ | ------------------------------- |
-| `USE_GROQ`               | Enable Groq provider            |
-| `GROQ_API_KEY`           | Groq API key                    |
-| `GROQ_MODEL`             | e.g. llama-3.3-70b-versatile    |
-| `OPENAI_API_KEY`         | optional                        |
-| `FRONTEND_ALLOW_ORIGINS` | CORS allowed origins            |
-| `BACKEND_PORT`           | backend port (Cloud Run = 8080) |
+### **5. Modern UI with glassmorphism**
 
----
+* Clean, creative, aesthetic
+* Mobile-friendly
+* Smooth interactions
+* Encourages ease of use
 
-## 📡 API — `/api/summarize`
+### **6. Correct CORS & Cloud-Ready Deployment**
 
-### **POST** `/api/summarize`
+* CORS controlled via Cloud Run env variable
+* Cloud Run handles scaling & traffic
+* Zero idle cost (min-instances=0)
+* Frontend communicates via environment-specified API
 
-**Request body (text mode):**
+### **7. Future extensibility**
 
-```json
-{
-  "text": "Your text...",
-  "style": "brief"
-}
-```
+This architecture allows easily adding:
 
-**Request body (file mode):**
-
-```
-multipart/form-data:
-  file: <uploaded-file>
-  style: brief | detailed | bullets
-```
-
-**Response:**
-
-```json
-{
-  "summary": "Generated summary text..."
-}
-```
+* OCR
+* RAG summarization
+* AI chat
+* Embedding generator
+* Multiple AI providers
 
 ---
 
 
----
 
-## 📝 License
+# 📄 **License**
 
-MIT License — see LICENSE file.
-
----
-
-## ✨ Author
-
-**Uday Garg**
-Portfolio: [https://www.udaygarg.com](https://www.udaygarg.com)
-AI Projects | Web Development | Cloud Engineering
+MIT License
+You are free to use, modify, and distribute this project.
 
 
-````
