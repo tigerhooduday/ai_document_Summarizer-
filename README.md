@@ -133,30 +133,35 @@ Quota errors, invalid file, timeout, etc.
 ---
 # 📁 Project Structure
 
+```
+
 Project-Assignment/
 ├── README.md
 ├── LICENSE
 ├── frontend/
-│ ├── package.json
-│ ├── vite.config.js
-│ ├── public/
-│ └── src/
-│ ├── App.jsx
-│ ├── main.jsx
-│ ├── components/
-│ ├── services/api.js
-│ └── styles/
+│   ├── package.json
+│   ├── vite.config.js
+│   ├── public/
+│   └── src/
+│       ├── App.jsx
+│       ├── main.jsx
+│       ├── components/
+│       ├── services/api.js
+│       └── styles/
 ├── backend/
-│ ├── Dockerfile
-│ ├── requirements.txt
-│ ├── cloudbuild.yaml
-│ ├── app/
-│ │ ├── main.py
-│ │ ├── api/summarize.py
-│ │ ├── services/llm_client.py
-│ │ └── models/schemas.py
-│ └── README_BACKEND.md
+│   ├── Dockerfile
+│   ├── requirements.txt
+│   ├── cloudbuild.yaml
+│   ├── app/
+│   │   ├── main.py
+│   │   ├── api/summarize.py
+│   │   ├── services/llm_client.py
+│   │   └── models/schemas.py
+│   └── README_BACKEND.md
 └── .gitignore
+
+````
+
 
 ---------
 
